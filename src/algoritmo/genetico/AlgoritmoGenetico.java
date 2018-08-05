@@ -83,7 +83,7 @@ public class AlgoritmoGenetico {
       
     ListaString = listas.listaToString(leitura); //Converte para String a Lista de numeros lidos do arquiv ode texto
     populacao = listas.removerLetras(ListaString); //Retirar tudo q nao for numero do arquivo de texto lido
-    Fitness = listas.inverterString(populacao); //Inverte os 0 por 1, apra termso a Fitness
+    Fitness = listas.inverterString(populacao); //Inverte os 0 por 1, para temos a Fitness
     
     System.out.println(populacao);
     System.out.println(Fitness);
@@ -114,9 +114,13 @@ public class AlgoritmoGenetico {
        System.out.println(resultado);
    }
    */
-  
-   repdorucao.Reproduzir(PopulacaoAleatoriaInicial[IndiceMelhor], PopulacaoAleatoriaInicial, IndiceMelhor );
-
+   String NovaPopulacao[] = new String[PopulacaoAleatoriaInicial.length]; 
+   NovaPopulacao = repdorucao.Reproduzir(PopulacaoAleatoriaInicial[IndiceMelhor], PopulacaoAleatoriaInicial, IndiceMelhor );
+    //----- Inicio da Mutação
+    
+    Mutacao mutacao = new Mutacao();
+    mutacao.Mutar(NovaPopulacao);
+    
   }
 }
     

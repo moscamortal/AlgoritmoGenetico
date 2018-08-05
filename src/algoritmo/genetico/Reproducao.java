@@ -35,11 +35,11 @@ public class Reproducao {
         NovaPopulacao[0] = Melhor;
         System.out.println(Populacao[0]);
         
-        for(int i = 1; i < Populacao.length; i++){
+            for(int i = 1; i < Populacao.length; i++){
                NovaPopulacao[i] = Cruzador(Melhor, Populacao[i]);  
                System.out.println(Populacao[i]);
-        }
+            }
         
-        return NovaPopulacao;
+    return NovaPopulacao;
     }
 }

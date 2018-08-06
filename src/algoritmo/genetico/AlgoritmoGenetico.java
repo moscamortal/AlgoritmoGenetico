@@ -114,12 +114,16 @@ public class AlgoritmoGenetico {
        System.out.println(resultado);
    }
    */
+  
    String NovaPopulacao[] = new String[PopulacaoAleatoriaInicial.length]; 
    NovaPopulacao = repdorucao.Reproduzir(PopulacaoAleatoriaInicial[IndiceMelhor], PopulacaoAleatoriaInicial, IndiceMelhor );
+   
     //----- Inicio da Mutação
     
     Mutacao mutacao = new Mutacao();
     mutacao.Mutar(NovaPopulacao);
+    
+    
     
   }
 }

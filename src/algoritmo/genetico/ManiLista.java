@@ -35,7 +35,7 @@ public class ManiLista {
 		return(aa);
 	}
 	
-	public String inverterString(String aa) {
+            public String inverterString(String aa) {
 		
 		String invertida = aa.replaceAll("[1]", "2");
 		invertida = invertida.replaceAll("[0]", "1");

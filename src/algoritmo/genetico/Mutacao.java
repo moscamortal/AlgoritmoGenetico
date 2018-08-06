@@ -16,34 +16,29 @@ Random gerador = new Random();
     
     public void Mutar(String Populacao[]){
         
-    String tempoInicio;
-    String tempoFinal;
-        
         for(int i = 0; i < Populacao.length; i++){
-            
+         String IndividuoTemp = null;
+         
             for(int x = 0; x < Populacao[i].length();x++){                
-                int randomNum = gerador.nextInt((1 - 0) + 1) + 0;               
+                int randomNum = gerador.nextInt((100 - 0) + 1) + 0;     
+                
                 if(randomNum == 1){
-                     
-                     if(Populacao[i].charAt(x) == '1'){
-                         tempoInicio = "";
-                         tempoFinal = "";
-                         
-                         tempoInicio = Populacao[i].substring(0, x);
-                         tempoFinal = Populacao[i].substring(x,Populacao[i].length());
-                         
-                         Populacao[i] = tempoInicio + "0" + tempoFinal;
-                     }else{
-                         tempoInicio = "";
-                         tempoFinal = "";
-                         
-                         tempoInicio = Populacao[i].substring(0, x -1);
-                         tempoFinal = Populacao[i].substring(x +1,Populacao[i].length());
-                         
-                         Populacao[i] = tempoInicio + "1" + tempoFinal;                        
-                     }              
+                    ManiLista manilista = new ManiLista();
+                        if(IndividuoTemp == null){
+                           IndividuoTemp =  manilista.inverterString(String.valueOf(Populacao[i].charAt(x)));
+                           
+                        }else{
+                            IndividuoTemp = IndividuoTemp + manilista.inverterString(String.valueOf(Populacao[i].charAt(x)));
+                        }
+                    
+                }else if(IndividuoTemp == null){
+                    IndividuoTemp = String.valueOf(Populacao[i].charAt(x));
+                }else{
+                    IndividuoTemp = IndividuoTemp + String.valueOf(Populacao[i].charAt(x));
                 }
-            }          
+            }
+            Populacao[i] = IndividuoTemp;
+            System.out.println(Populacao[i]);
         }
     }
        

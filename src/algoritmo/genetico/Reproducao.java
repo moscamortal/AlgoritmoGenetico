@@ -40,6 +40,7 @@ public class Reproducao {
                System.out.println(Populacao[i]);
             }
         
+            System.out.println();
     return NovaPopulacao;
     }
 }

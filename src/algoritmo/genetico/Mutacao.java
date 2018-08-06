@@ -14,13 +14,13 @@ import java.util.Random;
 public class Mutacao {
 Random gerador = new Random();
     
-    public void Mutar(String Populacao[]){
+    public String[] Mutar(String Populacao[]){
         
         for(int i = 0; i < Populacao.length; i++){
          String IndividuoTemp = null;
          
             for(int x = 0; x < Populacao[i].length();x++){                
-                int randomNum = gerador.nextInt((100 - 0) + 1) + 0;     
+                int randomNum = gerador.nextInt(100);     
                 
                 if(randomNum == 1){
                     ManiLista manilista = new ManiLista();
@@ -38,8 +38,8 @@ Random gerador = new Random();
                 }
             }
             Populacao[i] = IndividuoTemp;
-            System.out.println(Populacao[i]);
+            System.out.println(Populacao[i]);        
         }
-    }
-       
+       return Populacao;
+    }      
 }

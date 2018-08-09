@@ -38,7 +38,7 @@ Random gerador = new Random();
                 }
             }
             Populacao[i] = IndividuoTemp;
-            System.out.println(Populacao[i]);        
+            //System.out.println(Populacao[i]);        
         }
        return Populacao;
        

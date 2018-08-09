@@ -11,10 +11,11 @@ package algoritmo.genetico;
  * @author leandro
  */
 public class Fitness {
+    public static int FitnessMelhor;
     
     public int[] CompararFitness(String FitnessAtual, String Populacao[], int TamanhoPopulacao, int TamanhoIndividuo){        
         
-    int[] VetorPontuacao = new int[TamanhoPopulacao];
+     int[] VetorPontuacao = new int[TamanhoPopulacao];
       
         for(int x = 0; x < TamanhoPopulacao; x++ ){
             
@@ -24,7 +25,7 @@ public class Fitness {
                     VetorPontuacao[x] = VetorPontuacao[x] + 1;                    
                 }
             }
-            System.out.println(VetorPontuacao[x]);
+          //System.out.println(VetorPontuacao[x]);
          }             
         return VetorPontuacao; 
     }
@@ -41,8 +42,9 @@ public class Fitness {
                 IndiceMelhor = i;
             }         
         }
-        System.out.println(Melhor); 
-        System.out.println(IndiceMelhor);  
+     //   System.out.println(Melhor); 
+      //  System.out.println(IndiceMelhor);
+        this.FitnessMelhor = Melhor;
         return IndiceMelhor;
     }
 }

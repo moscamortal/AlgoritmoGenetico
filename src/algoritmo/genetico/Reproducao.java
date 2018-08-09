@@ -17,7 +17,7 @@ public class Reproducao {
        // Melhor = "00000000000000000000";
         //Populacao = "11111111111111111111";
        Random gerador = new Random();
-       int Tamanho = 20; 
+       int Tamanho = Populacao.length();
        String NovoIndividuo;   
            
        int separador = gerador.nextInt(Tamanho);
@@ -33,14 +33,14 @@ public class Reproducao {
         String NovaPopulacao[] = new String[Populacao.length]; 
        
         NovaPopulacao[0] = Melhor;
-        System.out.println(Populacao[0]);
+      //  System.out.println(Populacao[0]);
         
             for(int i = 1; i < Populacao.length; i++){
                NovaPopulacao[i] = Cruzador(Melhor, Populacao[i]);  
-               System.out.println(Populacao[i]);
+              // System.out.println(Populacao[i]);
             }
         
-            System.out.println();
+          // System.out.println();
     return NovaPopulacao;
     
     }

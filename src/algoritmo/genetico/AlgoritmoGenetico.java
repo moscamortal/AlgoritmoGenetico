@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -29,6 +30,8 @@ public class AlgoritmoGenetico {
 	static String comLetras;
 	static String semNumeros;
 	static int IndiceMelhor;
+        static int FitnessMelhor = -1;
+        static String[] PopulacaoPosInicializada;
         
 //========================
 	public static void gerarVetor(String invertida) {
@@ -85,10 +88,77 @@ public class AlgoritmoGenetico {
     populacao = listas.removerLetras(ListaString); //Retirar tudo q nao for numero do arquivo de texto lido
     Fitness = listas.inverterString(populacao); //Inverte os 0 por 1, para temos a Fitness
     
-    System.out.println(populacao);
-    System.out.println(Fitness);
+   System.out.println(populacao);
+   System.out.println(Fitness);
        
-    System.out.println();
+   // System.out.println();
+    int i = 0;
+       while ((FitnessMelhor != 0) || (i < 1000)){ // Validação por 10000 populações
+        i++;
+            while((FitnessMelhor != 0)){
+                
+                 if(FitnessMelhor == -1){
+
+                    //----- Gerar populacao
+                   String PopulacaoAleatoriaInicial[];
+                   PopulacaoAleatoriaInicial = pop.GerarPopulacaoAleatoria(populacao.length());
+
+                    //----- Inicio do Fitness
+
+                   Fitness fitness = new Fitness();
+
+                   IndiceMelhor = fitness.SelecionarMaisApto(fitness.CompararFitness(Fitness,PopulacaoAleatoriaInicial, PopulacaoAleatoriaInicial.length, populacao.length()));
+                  //String MaisAptoAtual = PopulacaoAleatoriaInicial[IndiceMelhor];
+                  // System.out.println(PopulacaoAleatoriaInicial[IndiceMelhor]);
+
+                   //----- Inicio da reprodução 
+
+                   Reproducao repdorucao = new Reproducao();
+
+                   PopulacaoPosInicializada = repdorucao.Reproduzir(PopulacaoAleatoriaInicial[IndiceMelhor], PopulacaoAleatoriaInicial, IndiceMelhor );
+
+                   //----- Inicio Mutacao
+                   
+                   Mutacao mutacao = new Mutacao();
+                   mutacao.Mutar(PopulacaoPosInicializada);
+                    
+                   FitnessMelhor = fitness.FitnessMelhor;
+                } 
+                 else if(FitnessMelhor != 0){
+
+                    //----- Inicio do Fitness
+
+                    Fitness fitness = new Fitness();
+
+                    IndiceMelhor = fitness.SelecionarMaisApto(fitness.CompararFitness(Fitness,PopulacaoPosInicializada, PopulacaoPosInicializada.length, populacao.length())); 
+                    //System.out.println(PopulacaoPosInicializada[IndiceMelhor]);
+
+                    //---- Inicio da Reprodução
+                    Reproducao repdorucao = new Reproducao();
+                    PopulacaoPosInicializada = repdorucao.Reproduzir(PopulacaoPosInicializada[IndiceMelhor], PopulacaoPosInicializada, IndiceMelhor );
+                    
+                    //----- Inicio da Mutação
+                    
+                    Mutacao mutacao = new Mutacao();
+                   mutacao.Mutar(PopulacaoPosInicializada);
+                    
+                    
+                    //----- Validação da Fitness
+                    FitnessMelhor = fitness.FitnessMelhor;
+                }              
+            }          
+       } 
+               
+       if(FitnessMelhor == 0){
+                 System.out.println("VocÊ chjegou a resultado ideal");
+                 System.out.println(PopulacaoPosInicializada[IndiceMelhor]);
+            }
+            else{
+                System.out.println("Não existe solução possivel");
+            }
+    }
+}
+    /*
     
     //----- Gerar populacao
     
@@ -106,14 +176,6 @@ public class AlgoritmoGenetico {
    
    Reproducao repdorucao = new Reproducao();
    
-  /*String a = "3";
-  String b = "0";
-   
-   for(int i = 0; i < 50; i++){
-       String resultado = repdorucao.Cruzador(a,b);  
-       System.out.println(resultado);
-   }
-   */
   
    String NovaPopulacao[] = new String[PopulacaoAleatoriaInicial.length]; 
    NovaPopulacao = repdorucao.Reproduzir(PopulacaoAleatoriaInicial[IndiceMelhor], PopulacaoAleatoriaInicial, IndiceMelhor );
@@ -123,9 +185,8 @@ public class AlgoritmoGenetico {
     Mutacao mutacao = new Mutacao();
     mutacao.Mutar(NovaPopulacao);
     
+    */
     
-    
-  }
-}
+
     
 
